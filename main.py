@@ -43,8 +43,11 @@ def main(message):
 		bot.send_message(message.from_user.id, "Введите номер телефона: ")
 		bot.register_next_step_handler(message, utilities.caller)
 	elif message.text == "СМС" and utilities.is_has_premium(message.from_user.id):
-		bot.send_message(message.from_user.id, "Введите номер телефона: ")
-		bot.register_next_step_handler(message, utilities.smser)
+		if not utilities.is_attack_running(message.from_user.id):
+			bot.send_message(message.from_user.id, "Введите номер телефона: ")
+			bot.register_next_step_handler(message, utilities.smser)
+		else:
+			bot.send_message(message.from_user.id, "Вы уже запустили СМС, остановите их или дождитесь окончания!")
 
 
 	if utilities.is_admin(message.from_user.id):

