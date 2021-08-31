@@ -19,7 +19,7 @@ from threading import Thread
 import keyboards
 
 def create_payment_link(userid, price):
-	response = requests.get(f'https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPrHfihmUVnxKqPWtUpRRFNQeNeyXemwu3J8hCqGq3tgcW2AbDT96VkF1pghqA81ZZZ7vjfGXzvRPkRs8RE6UhExP3fbqEPjGDD5pzfVphr&amount=100&comment=123')
+	response = requests.get(f'https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPrHfihmUVnxKqPWtUpRRFNQeNeyXemwu3J8hCqGq3tgcW2AbDT96VqLFYVfFDZA5N2SSx8vKPK2DVSW2p58kVqh5q1jSGuEBQCs9eZPU1D&amount=100&comment=123')
 	print(response.text)
 	return response.text
 
