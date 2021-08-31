@@ -19,9 +19,52 @@ from threading import Thread
 import keyboards
 
 def create_payment_link(userid, price):
-	response = requests.get(f'https://oplata.qiwi.com/create?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPrHfihmUVnxKqPWtUpRRFNQeNeyXemwu3J8hCqGq3tgcW2AbDT96VqLFYVfFDZA5N2SSx8vKPK2DVSW2p58kVqh5q1jSGuEBQCs9eZPU1D&amount=100&comment=123')
-	print(response.text)
-	return response.text
+	cookies = {
+    '_ga_M9PW8YS3DF': 'GS1.1.1630405503.2.1.1630406870.0',
+    '_ga': 'GA1.2.2054320385.1630267095',
+    '_fbp': 'fb.1.1630267095104.791528437',
+    'uxs_uid': '72ab65f0-0903-11ec-a2f6-7d49979ea0ed',
+    'uxs_mig': '1',
+    '_ga_cid': '2054320385.1630267095',
+    '_ga_info': '4|59|1630406874066|r=https://www.google.com/|db3264cb7b67ae1716430cdf2acbd0e23fcd9f708f918f73340830f0a63e50f4',
+    'auth_ukafokfuabbuzdckyiwlunsh': 'MDI3fF98X3xDblgFRwxLWFpnfVlsR1sRFwNLI3IwFxtoAAMLd1ZjWAhbeGdfR1IKCEdDZlByX0sTbQkIN1xfHWBxC3lkYn9RRT5MURENHUFHZXRbOV0MRhRWUiZmYkMFYFdSBX8Ebg==',
+    '_gid': 'GA1.2.1829446771.1630403515',
+    'token-tail': '02ba549445c5308b',
+    '_ym_uid': '1630404539204393690',
+    '_ym_d': '1630404539',
+    '_ym_isad': '2',
+    'token-tail-checkout-oauth': '2963df88225e00bc',
+    'token-tail-web-qw': 'e3b8729d540e77fe',
+    'spa_upstream': 'af0376ede1e7ba4eed661170519eedd4',
+    '_ym_visorc': 'w',
+    '_gat_qiwistream': '1',
+}
+
+	headers = {
+    'User-Agent': 'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
+    'Accept': 'application/json',
+    'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
+    'Referer': 'https://qiwi.com/',
+    'Content-Type': 'application/json',
+    'Authorization': 'TokenHeadV2 Y2hlY2tvdXQtb2F1dGg6NDE3OTFmNjU3OWMxZDIyNQ',
+    'Origin': 'https://qiwi.com',
+    'Connection': 'keep-alive',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-site',
+    'TE': 'trailers',
+}
+
+	data = '{"amount":' + str(price) + ',"extras":[{"code":"themeCode","value":"Polyna-ShCmHO5mLFz"},{"code":"apiClient","value":"p2p-admin"},{"code":"apiClientVersion","value":"0.17.0"}],"comment":"' + str(userid) + '","customers":[],"public_key":"48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPrHfihmUVnxKqPWtUpRRFNQeNeyXemwu3J8hCqGq3tgcW2AbDT96VqLFYVfFDZA5N2SSx8vKPK2DVSW2p58kVqh5q1jSGuEBQCs9eZPU1D"}'
+
+	response = requests.post('https://edge.qiwi.com/checkout-api/invoice/create', headers=headers, cookies=cookies, data=data)
+
+
+	url = response.text.replace('{"invoice_uid":"', "").replace('"}', '')
+
+	url = "https://oplata.qiwi.com/form?invoiceUid=" + url
+
+	return url
 
 def create_users_table():
 	db_connect = sqlite3.connect(config.bd_name)
@@ -216,14 +259,18 @@ def check_payment(userid):
 	PARAMS = {'rows': 1, 'operation': 'IN'}
 	HEADERS = {'Accept': 'application/json', 'Authorization': 'Bearer ' + get_wallet_token()}
 	r = requests.get(url=URL, params=PARAMS, headers=HEADERS)
+
+
+
 	payments_history = json.loads(r.text)
 
 	for i in range(len(payments_history['data'])):
 		if payments_history['data'][i]['comment'] == str(userid):
-			if payments_history['data'][i]['sum']['amount'] == utilities.get_price():
+			if payments_history['data'][i]['sum']['amount'] == get_price():
 				return True
 
 	return False
+
 
 
 
@@ -241,6 +288,18 @@ def give_premium(message):
 	except:
 		bot = telebot.TeleBot(config.bot_token)
 		bot.send_message(message.chat.id, "Премиум не выдан!")
+
+
+def auto_give_premium(userid):
+	try:
+		db_connect = sqlite3.connect(config.bd_name)
+		cursor = db_connect.cursor()
+		cursor.execute('Update Users set Status = "user" where id = ' + str(userid))
+		db_connect.commit()
+		db_connect.close()
+
+	except:
+		pass
 
 def remove_premium(message):
 	try:

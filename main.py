@@ -83,6 +83,8 @@ def query_handler(call):
 	if call.data == "checkpayment":
 		if utilities.check_payment(call.from_user.id):
 			bot.send_message(call.from_user.id, "Ваш платеж одобрен!")
+			utilities.auto_give_premium(str(call.from_user.id))
+			bot.send_message(call.from_user.id, "Вам выдан доступ к боту! Чтобы обновить бота введите /start")
 		else:
 			bot.send_message(call.from_user.id, "Ваш платеж не найден!")
 	elif call.data == "stop_attack":
