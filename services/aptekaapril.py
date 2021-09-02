@@ -1,5 +1,7 @@
 import requests
 
+import os
+import sys
 
 
 headers = {
@@ -18,7 +20,7 @@ headers = {
     'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
 }
 
-data = '{"phone":' + phone +  ',"password":"wefew3fwergf21124eFERFWEF","pname":"WEFDFW11EFSFE","name":"WEFWEFSDF11WEF","sname":"DWEF112F","email":"DQWFDWERG11ERWGF@gmail.com"}'
+data = '{"phone":' + sys.argv[1] +  ',"password":"wefew3fwergf21124eFERFWEF","pname":"WEFDFW11EFSFE","name":"WEFWEFSDF11WEF","sname":"DWEF112F","email":"DQW213RWGF@gmail.com"}'
 
 response3 = requests.post('https://web-api.apteka-april.ru/users', headers=headers, data=data)
 

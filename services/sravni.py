@@ -1,6 +1,8 @@
 import requests
 
+import os
 
+import sys
 
 cookies = {
     '.ASPXANONYMOUS': 'nXpyv9H4gkmzD_ZKefwG_Q',
@@ -49,7 +51,7 @@ headers = {
 
 data = {
   '__RequestVerificationToken': 'CfDJ8J96m9uv8aZPiBSemDUDOYPQSBsA8geGOGrkDVa1q_fXdUOC3pCXqQYiDYzpTLpOct70jxdJnmCyFKwmEQLCN_9IK-V-iiBGHLQD4lnHgE1IPGYah1FtQa2qCe1pNXh56MVQCRMz7XbbekWFhz-a7PQ',
-  'phone': '+' + phone,
+  'phone': '+' + sys.argv[1],
   'returnUrl': '/connect/authorize/callback?client_id=www&amp;scope=openid%20offline_access%20email%20phone%20profile%20roles%20Sravni.Reviews.Service%20Sravni.Osago.Service%20Sravni.QnA.Service%20Sravni.FileStorage.Service%20Sravni.Memory.Service%20reviews%20Sravni.PhoneVerifier.Service%20Sravni.Identity.Service%20Sravni.VZR.Service%20messagesender.sms%20Sravni.Affiliates.Service%20esia%20orders.r&amp;response_type=code%20id_token%20token&amp;redirect_uri=https%3A%2F%2Fwww.sravni.ru%2Fopenid%2Fcallback%2F&amp;response_mode=form_post&amp;state=Q_60LeZi1vkySKYnmEd8oYjnwAruhwjsrE4DB6iY-j0&amp;nonce=35MNGvxjcpSW5ZVZipX_50xZABdmVMPoA-Tv8mafR7E&amp;login_hint&amp;acr_values'
 }
 

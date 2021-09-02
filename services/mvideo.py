@@ -1,4 +1,7 @@
 import requests
+import sys
+import os
+
 
 cookies = {
     '_JHASH__': '236',
@@ -81,7 +84,7 @@ params = (
 )
 
 data = {
-  'phone': '+7 922 2633421',
+  'phone': '+' + sys.argv[1],
   'g-recaptcha-response': '',
   'recaptcha': 'on'
 }

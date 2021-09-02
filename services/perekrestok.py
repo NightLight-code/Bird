@@ -1,5 +1,6 @@
 import requests
-
+import sys
+import os
 cookies = {
     'suuid': '895f381c-e4ee-4fe3-a61f-4d461bca20b9',
     'luuid': '895f381c-e4ee-4fe3-a61f-4d461bca20b9',
@@ -68,7 +69,7 @@ headers = {
 }
 
 data = {
-  'phone': '79222633421'
+  'phone': sys.argv[1]
 }
 
 response = requests.post('https://www.vprok.ru/as_send_pin', headers=headers, cookies=cookies, data=data)

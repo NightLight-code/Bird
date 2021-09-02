@@ -1,4 +1,8 @@
 import requests
+import sys
+import os
+
+
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
@@ -14,6 +18,9 @@ headers = {
     'TE': 'trailers',
 }
 
-data = '{"phone":"79222633421","landing":"main"}'
+data = '{"phone":"' + sys.argv[1] + '","landing":"main"}'
 
 response = requests.post('https://hemingoway.city-mobil.ru/api/v1/send_link', headers=headers, data=data)
+
+
+print(response.text)

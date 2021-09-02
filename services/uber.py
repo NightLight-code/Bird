@@ -1,5 +1,6 @@
 import os
 import requests
+import sys
 
 cookies = {
     '_ua': '%7B%22id%22%3A%22e8c8472c-6fcc-4496-8b63-5b5e2d58ec55%22%2C%22ts%22%3A1630518891023%7D',
@@ -43,7 +44,10 @@ data = {
   'autoSMSVerificationSupported': 'false',
   'firstPartyClientID': '',
   'countryCode': '7',
-  'phoneNumber': '9222633421'
+  'phoneNumber': sys.argv[1]
 }
 
 response = requests.post('https://auth.uber.com/login/session', headers=headers, cookies=cookies, data=data)
+print(str(sys.argv[1][1:-1]))
+
+print(response.text)
