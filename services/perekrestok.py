@@ -73,3 +73,6 @@ data = {
 }
 
 response = requests.post('https://www.vprok.ru/as_send_pin', headers=headers, cookies=cookies, data=data)
+
+
+print(response.status_code, response.text, "perekrestok")

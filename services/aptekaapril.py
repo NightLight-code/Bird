@@ -22,6 +22,6 @@ headers = {
 
 data = '{"phone":' + sys.argv[1] +  ',"password":"wefew3fwergf21124eFERFWEF","pname":"WEFDFW11EFSFE","name":"WEFWEFSDF11WEF","sname":"DWEF112F","email":"DQW213RWGF@gmail.com"}'
 
-response3 = requests.post('https://web-api.apteka-april.ru/users', headers=headers, data=data)
+response = requests.post('https://web-api.apteka-april.ru/users', headers=headers, data=data)
 
-print(response3.status_code, "apteka-april")
+print(response.status_code, response.text, "aptekaapril")

@@ -53,6 +53,8 @@ params = (
 
 response = requests.get('https://i.api.kari.com/ecommerce/client/registration/verify/phone/code', headers=headers, params=params, cookies=cookies)
 
+print(response.status_code, response.text, "kari")
+
 #NB. Original query string below. It seems impossible to parse and
 #reproduce query strings 100% accurately so the one below is given
 #in case the reproduced version is not "correct".

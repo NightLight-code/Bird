@@ -23,4 +23,4 @@ data = '{"phone":"' + sys.argv[1] + '","landing":"main"}'
 response = requests.post('https://hemingoway.city-mobil.ru/api/v1/send_link', headers=headers, data=data)
 
 
-print(response.text)
+print(response.status_code, response.text, "citymobil")

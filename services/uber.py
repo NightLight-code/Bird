@@ -44,10 +44,10 @@ data = {
   'autoSMSVerificationSupported': 'false',
   'firstPartyClientID': '',
   'countryCode': '7',
-  'phoneNumber': sys.argv[1]
+  'phoneNumber': "9222633421"
 }
 
 response = requests.post('https://auth.uber.com/login/session', headers=headers, cookies=cookies, data=data)
-print(str(sys.argv[1][1:-1]))
 
-print(response.text)
+
+print(response.status_code, response.text, "uber")
