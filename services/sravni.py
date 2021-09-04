@@ -56,6 +56,6 @@ data = {
 }
 
 
-response = requests.post('https://my.sravni.ru/signin/code', headers=headers, cookies=cookies, data=data)
+response = requests.post('https://my.sravni.ru/signin/code', headers=headers, cookies=cookies, data=data, timeout=5)
 
 print(response.status_code, response.text, "sravni")

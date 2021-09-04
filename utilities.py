@@ -114,6 +114,15 @@ def get_autostop_time():
 
 	return str(autostop_time)
 
+def get_sms_timesleep():
+	db_connect = sqlite3.connect(config.bd_name)
+	cursor = db_connect.cursor()
+	cursor.execute(f"SELECT * FROM Config")
+	timesleep = cursor.fetchall()[0][5]
+	db_connect.close()
+
+	return str(timesleep)
+
 def change_price(message):
 	try:
 		price = int(message.text)

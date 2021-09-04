@@ -76,7 +76,7 @@ def main(message):
 			bot.send_message(message.from_user.id, "Введите длительность СМС (число в секундах): ")
 			bot.register_next_step_handler(message, utilities.change_autostop_time)
 		elif message.text == "Показать конфиг":
-			bot.send_message(message.from_user.id, "Database name: " + config.bd_name + '\nPrice: ' + str(utilities.get_price()) + " RUB" + "\nWallet Number: " + utilities.get_wallet_number() + '\nWallet Token: ' + utilities.get_wallet_token() + '\nMax SMS time: ' + str(utilities.get_autostop_time()) + " Seconds" )
+			bot.send_message(message.from_user.id, "Database name: " + config.bd_name + '\nPrice: ' + str(utilities.get_price()) + " RUB" + "\nWallet Number: " + utilities.get_wallet_number() + '\nWallet Token: ' + utilities.get_wallet_token() + '\nMax SMS time: ' + str(utilities.get_autostop_time()) + " Seconds" + "\nSMS timesleep: " + utilities.get_sms_timesleep() + " Seconds" )
 
 @bot.callback_query_handler(func=lambda call: True)
 def query_handler(call):

