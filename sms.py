@@ -58,7 +58,7 @@ def run_sms(phone, userid):
 
         time.sleep(2)
 
-        os.system("python3 services/zdravcity.py " + phone[1:-1])
+        os.system("python3 services/sdravcity.py " + phone[1:-1])
 
         time.sleep(2)
 
