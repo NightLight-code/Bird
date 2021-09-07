@@ -17,7 +17,7 @@ headers = {
     'Sec-Fetch-Site': 'same-origin',
 }
 
-data = '{"CellPhone":"' + sys.argv[1] + '"}'
+data = '{"CellPhone":"' + sys.argv[1][1:] + '"}'
 #9 first
 response = requests.post('https://my.modulbank.ru/api/v2/auth/phone', headers=headers, data=data)
 

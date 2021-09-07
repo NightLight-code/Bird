@@ -2,18 +2,7 @@ import os
 import requests
 import sys
 
-cookies = {
-    '_ua': '%7B%22id%22%3A%22e8c8472c-6fcc-4496-8b63-5b5e2d58ec55%22%2C%22ts%22%3A1630518891023%7D',
-    'marketing_vistor_id': '165ad3be-054a-44a6-98d7-6d52118b764f',
-    'segmentCookie': 'b',
-    'utag_geo_code': 'RU',
-    'CONSENTMGR': 'c1:1%7Cc2:1%7Cc3:1%7Cc4:1%7Cc5:1%7Cc6:1%7Cc7:1%7Cc8:1%7Cc9:1%7Cc10:1%7Cc11:1%7Cc12:1%7Cc13:1%7Cc14:1%7Cc15:1%7Cts:1630518885698%7Cconsent:true',
-    '_gcl_au': '1.1.301129490.1630518887',
-    'arch-frontend:sess': 'Lfb8hkWNpEMZnGyEgal5bA.N4XHJmu16CYEXfOvNgie7LCU30-I0-zBBZrspVFi93FOQeyZZBi6avRuwqE9AfOyI2D8RFmGelUJQtNvXTyqPBCiNcOm9UFsQwC6CHrFozt7XYkUEjuskee3q94Lbf-MI_UN9A-R2H_uklXCThwpYo9PVN2umjewntRQKRARTWkcTvPVnGNyB8ylfL9gnyjgBUJdhxaDrt8FFqD3WEQcrXKpF64pL-LQiBpqUls7iM4rJHs6cFH0UZXbEewBsCZ5eecYj06ol5ovXYHioaMMCVsOugPpHGhafnbfxvU7BtPkKPNpiGIoXXoZzip1Em5C15Zv6QO5RrDuwsM2N3_o6fF5WK6TNKr5xkC78j8zh2oJSoam4OgEAVJNx3k4vLQlFSWzs1nxSoH79XTbQNRREI3RFmZ_b_jn-XXLy2_9z-hrkql1F2qRoaKc5toOYZKegQ_XXoz1oFBfqeGdxP_D1K3Y2XSM79wXVDNnpuIUygMIPmvKvfu4iyb36B_ixXVV9j4XmHTS2w7_Ne3xlmS8r7d75404bPVI4HUcFsMnRWI.1630518889704.1209600000.98WohYQMJkuDAjrZroBoifoj05MRKIGYd6DJEwkMddA',
-    'auth_ga_trigger': 'main',
-    '_cc': 'AdTD9CXtfMRwkeAoK1EZs5dY',
-    'G_ENABLED_IDPS': 'google',
-}
+
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
@@ -44,10 +33,10 @@ data = {
   'autoSMSVerificationSupported': 'false',
   'firstPartyClientID': '',
   'countryCode': '7',
-  'phoneNumber': "9222633421"
+  'phoneNumber': sys.argv[1][1:]
 }
 
-response = requests.post('https://auth.uber.com/login/session', headers=headers, cookies=cookies, data=data)
+response = requests.post('https://auth.uber.com/login/session', headers=headers, data=data)
 
 
 print(response.status_code, response.text, "uber")

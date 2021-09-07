@@ -16,7 +16,7 @@ headers = {
     'Sec-Fetch-Site': 'cross-site',
 }
 
-data = '{"password":"","login":"' + sys,argv[1] + '"}'
+data = '{"password":"","login":"' + sys.argv[1] + '"}'
 
 response = requests.post('https://loymax.ivoin.ru/publicapi/v1.2/Registration/BeginRegistration', headers=headers, data=data)
 

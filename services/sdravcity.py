@@ -64,7 +64,7 @@ headers = {
 }
 
 data = {
-  'phone': sys.argv[1],
+  'phone': sys.argv[1][1:],
   'bxsid': '806abc9ea18c056a75c0e117c4f87341',
   'sms1': 'Y',
   'typeAction': 'regUser'

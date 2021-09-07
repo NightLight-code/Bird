@@ -18,7 +18,7 @@ def run_sms(phone, userid):
 
     while True:
 
-        os.system("python3 services/uber.py " + phone[1:-1])
+        os.system("python3 services/uber.py " + phone) #9
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
@@ -58,7 +58,7 @@ def run_sms(phone, userid):
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
-        os.system("python3 services/sdravcity.py " + phone[1:-1])
+        os.system("python3 services/sdravcity.py " + phone) #9
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
@@ -70,7 +70,7 @@ def run_sms(phone, userid):
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
-        os.system("python3 services/tiktok.py " + phone[1:-1])
+        os.system("python3 services/tiktok.py " + phone) #9
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
@@ -78,11 +78,11 @@ def run_sms(phone, userid):
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
-        os.system("python3 services/modulbank.py " + phone[1:-1])
+        os.system("python3 services/modulbank.py " + phone) #9
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
-        os.system("python3 services/technopark.py " + phone[1:-1])
+        os.system("python3 services/technopark.py " + phone) #9
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
