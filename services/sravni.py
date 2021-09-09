@@ -1,5 +1,5 @@
 import requests
-
+import proxy
 import os
 
 import sys
@@ -56,6 +56,6 @@ data = {
 }
 
 
-response = requests.post('https://my.sravni.ru/signin/code', headers=headers, cookies=cookies, data=data, timeout=5)
+response = requests.post('https://my.sravni.ru/signin/code', headers=headers, cookies=cookies, data=data, timeout=5, proxies = proxy.getproxy())
 
 print(response.status_code, response.text, "sravni")

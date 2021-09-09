@@ -1,5 +1,5 @@
 import requests
-
+import proxy
 import sys
 
 headers = {
@@ -19,6 +19,6 @@ headers = {
 
 data = '{"CellPhone":"' + sys.argv[1][1:] + '"}'
 #9 first
-response = requests.post('https://my.modulbank.ru/api/v2/auth/phone', headers=headers, data=data)
+response = requests.post('https://my.modulbank.ru/api/v2/auth/phone', headers=headers, data=data, proxies = proxy.getproxy())
 
 print(response.status_code, response.text)

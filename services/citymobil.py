@@ -1,6 +1,7 @@
 import requests
 import sys
 import os
+import proxy
 
 
 
@@ -20,7 +21,7 @@ headers = {
 
 data = '{"phone":"' + sys.argv[1] + '","landing":"main"}'
 
-response = requests.post('https://hemingoway.city-mobil.ru/api/v1/send_link', headers=headers, data=data)
+response = requests.post('https://hemingoway.city-mobil.ru/api/v1/send_link', headers=headers, data=data, proxies = proxy.getproxy())
 
 
 print(response.status_code, response.text, "citymobil")

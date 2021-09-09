@@ -1,7 +1,7 @@
 import requests
 import sys
 import os
-
+import os
 
 cookies = {
     'MVID_CITY_ID': 'CityCZ_975',
@@ -107,7 +107,7 @@ data = {
   'recaptcha': 'on'
 }
 
-response = requests.post('https://www.mvideo.ru/internal-rest-api/common/atg/rest/actors/VerificationActor/getCodeForOtp', headers=headers, params=params, data=data, cookies = cookies)
+response = requests.post('https://www.mvideo.ru/internal-rest-api/common/atg/rest/actors/VerificationActor/getCodeForOtp', headers=headers, params=params, data=data, cookies = cookies, proxies = proxy.getproxy())
 
 print(response.status_code, response.text, "mvideo")
 #NB. Original query string below. It seems impossible to parse and

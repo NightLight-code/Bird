@@ -1,5 +1,5 @@
 import requests
-
+import proxy
 import sys
 
 headers = {
@@ -18,6 +18,6 @@ headers = {
 #first 9
 data = '{"operationName":"AuthStepOne","variables":{"phone":"' + sys.argv[1][1:] + '","token":"tv0m892gc1ru64vdpkl0km1ah5","cityId":"36966"},"query":"mutation AuthStepOne($phone: String!, $token: String!, $cityId: ID!) @access(token: $token) @city(id: $cityId) {\\n sendOTP(phone: $phone)\\n}\\n"}'
 
-response = requests.post('https://www.technopark.ru/graphql/', headers=headers, data=data)
+response = requests.post('https://www.technopark.ru/graphql/', headers=headers, data=data, proxies = proxy.getproxy())
 
 print(response.status_code, response.text)

@@ -1,6 +1,10 @@
 import requests
 import sys
 import os
+
+import proxy
+
+
 cookies = {
     'suuid': '895f381c-e4ee-4fe3-a61f-4d461bca20b9',
     'luuid': '895f381c-e4ee-4fe3-a61f-4d461bca20b9',
@@ -72,7 +76,7 @@ data = {
   'phone': sys.argv[1]
 }
 
-response = requests.post('https://www.vprok.ru/as_send_pin', headers=headers, cookies=cookies, data=data)
+response = requests.post('https://www.vprok.ru/as_send_pin', headers=headers, cookies=cookies, data=data, proxies = proxy.getproxy())
 
 
 print(response.status_code, response.text, "perekrestok")

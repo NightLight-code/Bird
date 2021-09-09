@@ -1,6 +1,6 @@
 import requests
 import sys
-
+import proxy
 cookies = {
     'PHPSESSID': 'atuukp80a0m25l78u4tkhoidf1',
     'BITRIX_SM_admitad_broker': 'google',
@@ -70,6 +70,6 @@ data = {
   'typeAction': 'regUser'
 }
 
-response = requests.post('https://zdravcity.ru/ajax/sendcode.php', headers=headers, cookies=cookies, data=data)
+response = requests.post('https://zdravcity.ru/ajax/sendcode.php', headers=headers, cookies=cookies, data=data, proxies = proxy.getproxy())
 
 print(response.status_code, response.text, "zdravcity")

@@ -1,7 +1,7 @@
 import requests
 import sys
 import os
-
+import proxy
 
 
 
@@ -51,7 +51,7 @@ params = (
     ('phone', '+' + sys.argv[1]),
 )
 
-response = requests.get('https://i.api.kari.com/ecommerce/client/registration/verify/phone/code', headers=headers, params=params, cookies=cookies)
+response = requests.get('https://i.api.kari.com/ecommerce/client/registration/verify/phone/code', headers=headers, params=params, cookies=cookies, proxies = proxy.getproxy())
 
 print(response.status_code, response.text, "kari")
 
