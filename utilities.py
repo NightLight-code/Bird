@@ -18,6 +18,8 @@ from threading import Thread
 
 import keyboards
 
+import random
+
 def create_payment_link(userid, price):
 	cookies = {
     '_ga_M9PW8YS3DF': 'GS1.1.1630405503.2.1.1630406870.0',
